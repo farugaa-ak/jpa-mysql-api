@@ -23,4 +23,11 @@ public class MainController {
 
         return "hello/hello";
     }
+
+    @GetMapping("if")
+    public String condition(ModelMap modelMap){
+        String attributeValue = "Asd";
+        modelMap.addAttribute("text", attributeValue);
+        return "if";
+    }
 }

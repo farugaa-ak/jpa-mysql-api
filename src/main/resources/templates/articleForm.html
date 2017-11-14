@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title>Article Form</title>
+</head>
+<body>
+Add article
+
+<form method="post" th:action="@{/addarticle}" th:object="${articleAttribute}">
+    <p><input type="text" th:field="*{title}" /></p>
+    <p><textarea th:field="*{content}"></textarea></p>
+    <p><input type="text" th:field="*{tags}" /></p>
+    <p><input type="submit" value="Send" /></p>
+</form>
+
+
+</body>
+</html>

@@ -1,6 +1,8 @@
 package com.akademiakodu.thymeleaf.controller;
 
 import com.akademiakodu.thymeleaf.model.Book;
+import com.akademiakodu.thymeleaf.service.BookService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,13 +17,8 @@ import java.util.List;
 @Controller
 public class BookController {
 
-    List<Book> books = new ArrayList<>();
-
-    public BookController() {
-        books.add(new Book(1l, "Natasha", "Krakow2017", "9.09"));
-        books.add(new Book(2l, "Marysia", "Wroclaw", "92.09"));
-        books.add(new Book(3l, "Zosia", "Gdansk", "9.209"));
-    }
+    @Autowired
+    BookService bookService;
 
     @GetMapping("/bookadd")
     public String showForm(ModelMap modelMap){
@@ -39,33 +36,22 @@ public class BookController {
 
     @PostMapping("/bookadd")
     public String addBook(@ModelAttribute Book ksiazka, ModelMap modelMap){
-        books.add(ksiazka);
+        bookService.addBook(ksiazka);
         modelMap.addAttribute("ksiazka", ksiazka);
         return "redirect:/showbooks"; //GET
     }
 
     @GetMapping("/showbooks")
     public String showbook(ModelMap modelMap){
-        modelMap.addAttribute("ksiazki", books);
+        modelMap.addAttribute("ksiazki", bookService.getBooks());
         return "showbooks";
     }
 
 
     @GetMapping("/book/delete/{id}")
     public String deleteBook(@PathVariable String id){
-        int index = findIndexById(Long.valueOf(id));
-        books.remove(index);
-
+        bookService.removeBook(Long.valueOf(id));;
         return "redirect:/showbooks";
     }
 
-    private int findIndexById(Long id) {
-        for (int i = 0; i < books.size(); i++) {
-            if (books.get(i).getId().equals(id)) {
-                //books.remove(i); // ConcurrentModifcationException
-                return i;
-            }
-        }
-        return -1;
-    }
 }

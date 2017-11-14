@@ -27,5 +27,12 @@
     </tr>
 </table>
 
+
+
+
+<ul >
+    <li th:each="book: ${ksiazki}"  th:text="|${book.title} - ${book.author} ( ${book.price} ) |">Sample book</li>
+</ul>
+
 </body>
 </html>

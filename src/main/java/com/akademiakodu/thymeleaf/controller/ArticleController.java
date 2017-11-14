@@ -14,6 +14,8 @@ public class ArticleController {
     public String showFormArticle(ModelMap modelMap){
         Article articleAttr = new Article();
         modelMap.addAttribute("articleAttribute", articleAttr);
+
+        //view
         return "articleForm";
     }
 

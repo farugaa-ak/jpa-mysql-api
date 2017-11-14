@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-show book
+<h1> Show Books</h1>
 
 <h2>Table</h2>
 <table border="1">
@@ -14,7 +14,7 @@ show book
         <th>Title</th>
         <th>Price</th>
     </tr>
-    <tr th:each="book: ${books}" th:object="${book}">
+    <tr th:each="book: ${ksiazki}" th:object="${book}">
         <td th:text="*{title}">Author1</td>
         <td th:text="*{author}">Title1</td>
         <td th:text="*{price}">1234</td>

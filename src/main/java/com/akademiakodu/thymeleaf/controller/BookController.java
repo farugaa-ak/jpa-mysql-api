@@ -7,10 +7,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class BookController {
 
-    //List<Book> = new ArrayList [..]
+    List<Book> books = new ArrayList<>();
 
     @GetMapping("/bookadd")
     public String showForm(ModelMap modelMap){
@@ -28,15 +31,14 @@ public class BookController {
 
     @PostMapping("/bookadd")
     public String addBook(@ModelAttribute Book ksiazka, ModelMap modelMap){
-        //list.add(book)
+        books.add(ksiazka);
         modelMap.addAttribute("ksiazka", ksiazka);
         return "showbook";
     }
 
-
-/*    @GetMapping("/showbooks")
-    public String showbook(@ModelAttribute Book book, ModelMap modelMap){
-        modelMap.addAttribute("books", new Book());
-        return "showbook";
-    }*/
+    @GetMapping("/showbooks")
+    public String showbook(ModelMap modelMap){
+        modelMap.addAttribute("ksiazki", books);
+        return "showbooks";
+    }
 }

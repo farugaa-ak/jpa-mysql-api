@@ -1,17 +1,25 @@
 package com.akademiakodu.thymeleaf.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 //PLAIN OLD JAVA OBJECT POJO
+@Entity
 public class Book {
+
+    @Id
+    @GeneratedValue
+    private Long id;
 
     private String author;
     private String title;
     private String price;
 
-    private Long id;
     public Book() {
     }
 
-    public Book(Long id, String author, String title, String price) {
+    public Book(String author, String title, String price) {
         this.id = id;
         this.author = author;
         this.title = title;

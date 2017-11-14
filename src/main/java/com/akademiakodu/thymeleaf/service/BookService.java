@@ -24,6 +24,8 @@ public class BookService {
     }
 
     public void addBook(Book book) {
+        int nextId = books.size() + 1;
+        book.setId(Long.valueOf(nextId));
         books.add(book);
     }
 

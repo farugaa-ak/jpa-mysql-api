@@ -7,12 +7,20 @@
 <body>
 Add book
 
-<form method="post" th:action="@{/bookadd}" th:object="${book}">
+<form method="post" th:action="@{/bookadd}" th:object="${ksiazka}">
     <input type="text" th:field="*{author}" />
     <input type="text" th:field="*{title}" />
     <input type="text" th:field="*{price}" />
     <input type="submit" value="Send" />
 </form>
+<!--th:object + *{pole}-->
+<!--${obiekt.pole}-->
+<!--<form method="post" th:action="@{/bookadd}">
+    <input type="text" th:field="${ksiazka.author}" />
+    <input type="text" th:field="${ksiazka.title}" />
+    <input type="text" th:field="${ksiazka.price}" />
+    <input type="submit" value="Send" />
+</form>-->
 
 </body>
 </html>

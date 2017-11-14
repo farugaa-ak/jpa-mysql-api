@@ -1,5 +1,6 @@
 package com.akademiakodu.thymeleaf.model;
 
+//PLAIN OLD JAVA OBJECT POJO
 public class Book {
 
     private String author;

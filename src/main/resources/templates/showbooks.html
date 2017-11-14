@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+</head>
+<body>
+show book
+
+<h2>Table</h2>
+<table border="1">
+    <tr>
+        <th>Author</th>
+        <th>Title</th>
+        <th>Price</th>
+    </tr>
+    <tr th:each="book: ${books}" th:object="${book}">
+        <td th:text="*{title}">Author1</td>
+        <td th:text="*{author}">Title1</td>
+        <td th:text="*{price}">1234</td>
+    </tr>
+</table>
+
+</body>
+</html>

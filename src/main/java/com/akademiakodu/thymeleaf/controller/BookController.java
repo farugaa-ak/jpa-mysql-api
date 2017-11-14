@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -50,11 +51,21 @@ public class BookController {
     }
 
 
-    @GetMapping("/book/delete")
-    public String deleteBook(@RequestParam Long id){
-        //usunecie
+    @GetMapping("/book/delete/{id}")
+    public String deleteBook(@PathVariable String id){
+        int index = findIndexById(Long.valueOf(id));
+        books.remove(index);
 
+        return "redirect:/showbooks";
+    }
 
-        return "redirect:showbooks";
+    private int findIndexById(Long id) {
+        for (int i = 0; i < books.size(); i++) {
+            if (books.get(i).getId().equals(id)) {
+                //books.remove(i); // ConcurrentModifcationException
+                return i;
+            }
+        }
+        return -1;
     }
 }

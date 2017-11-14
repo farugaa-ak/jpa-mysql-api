@@ -20,7 +20,10 @@
         <td th:text="*{author}">Author1</td>
         <td th:text="*{title}">Title1</td>
         <td th:text="*{price}">1234</td>
-        <td> <a th:href="@{/book/delete?id=} + *{id}">Delete</a></td>
+        <!--/book/delete/1   @PathVariable-->
+        <td> <a th:href="@{/book/delete/} + *{id}">Delete</a></td>
+        <!--/book/delete?id=1   - @RequestParam-->
+        <!--<td> <a th:href="@{/book/delete?id=} + *{id}">Delete</a></td>-->
     </tr>
 </table>
 

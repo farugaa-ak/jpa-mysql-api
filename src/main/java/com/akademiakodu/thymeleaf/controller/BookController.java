@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,7 @@ public class BookController {
     BookService bookService;
 
     @GetMapping("/bookadd")
-    public String showForm(ModelMap modelMap){
+    public ModelAndView showForm(ModelMap modelMap){
         modelMap.addAttribute("ksiazka", new Book());
         //1
         //Book book = new Book();
@@ -31,7 +32,7 @@ public class BookController {
 //        book.setTitle("title");
 //        book.setPrice("33242");
 
-        return "addbook"; //@Controller + dependencies(thymleaf) - View
+        return new ModelAndView("addbook", modelMap); //@Controller + dependencies(thymleaf) - View
     }
 
     @PostMapping("/bookadd")
@@ -47,10 +48,16 @@ public class BookController {
         return "showbooks";
     }
 
-    @GetMapping("/book/delete/{id}")
-    public String deleteBook(@PathVariable String id){
+    @GetMapping("/book/delete")
+    public String deleteBook(@RequestParam String id){
         bookService.removeBook(Long.valueOf(id));
         return "redirect:/showbooks";
     }
+
+  /*  @GetMapping("/book/delete/{id}")
+    public String deleteBook2(@PathVariable String id){
+        bookService.removeBook(Long.valueOf(id));
+        return "redirect:/showbooks";
+    }*/
 
 }

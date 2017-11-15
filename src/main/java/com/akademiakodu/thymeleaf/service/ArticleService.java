@@ -33,4 +33,12 @@ public class ArticleService {
         }
         return articles;
     }
+
+    public Article findArticleByTitle(String title){
+        Article byTitle = articleRepository.findByTitle(title);
+        if (byTitle == null) {
+            return new Article("article doesnt exist", "article doesnt exist", "article doesnt exist");
+        }
+        return byTitle;
+    }
 }

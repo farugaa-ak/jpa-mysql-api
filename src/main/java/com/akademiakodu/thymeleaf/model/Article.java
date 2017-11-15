@@ -18,6 +18,12 @@ public class Article {
     public Article() {
     }
 
+    public Article(String title, String content, String tags) {
+        this.title = title;
+        this.content = content;
+        this.tags = tags;
+    }
+
     public String getTitle() {
         return title;
     }

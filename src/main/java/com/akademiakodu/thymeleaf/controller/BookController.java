@@ -1,6 +1,7 @@
 package com.akademiakodu.thymeleaf.controller;
 
 import com.akademiakodu.thymeleaf.model.Book;
+import com.akademiakodu.thymeleaf.repository.BookRepository;
 import com.akademiakodu.thymeleaf.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,8 +19,12 @@ import java.util.List;
 @Controller
 public class BookController {
 
-    @Autowired
     BookService bookService;
+
+    @Autowired
+    public BookController(BookService bookService) {
+        this.bookService = bookService;
+    }
 
     @GetMapping("/bookadd")
     public ModelAndView showForm(ModelMap modelMap){

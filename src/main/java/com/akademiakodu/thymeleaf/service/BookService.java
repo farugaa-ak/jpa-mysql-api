@@ -8,11 +8,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class BookService {
 
+    //injection by field/setter
     BookRepository bookRepository;
 
+    //injection by constructor
     @Autowired
     public BookService(BookRepository bookRepository) {
-        this.bookRepository  = bookRepository;
+        this.bookRepository = bookRepository;
         bookRepository.save(new Book("Natasha", "Krakow2017", "9.09"));
         bookRepository.save(new Book("Natasha", "Krakow2017", "9.09"));
         bookRepository.save(new Book("Marysia", "Wroclaw", "92.09"));
@@ -25,7 +27,7 @@ public class BookService {
     }
 
     public void addBook(Book book) {
-        bookRepository.save(book);
+        bookRepository.save(book);//adding rows to book table
     }
 
     public void removeBook(Long id) {

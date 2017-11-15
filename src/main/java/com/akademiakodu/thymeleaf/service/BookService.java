@@ -2,11 +2,15 @@ package com.akademiakodu.thymeleaf.service;
 
 import com.akademiakodu.thymeleaf.model.Book;
 import com.akademiakodu.thymeleaf.repository.BookRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class BookService {
+
+    private static final Logger LOG = LoggerFactory.getLogger(BookService.class);
 
     //injection by field/setter
     BookRepository bookRepository;

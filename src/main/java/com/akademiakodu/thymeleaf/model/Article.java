@@ -55,4 +55,14 @@ public class Article {
     public void setId(Long id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "Article{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", tags='" + tags + '\'' +
+                '}';
+    }
 }

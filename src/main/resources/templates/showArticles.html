@@ -9,10 +9,11 @@ Show article
 
 <a th:href="@{/article}">Add article</a>
 
-<ul >
-    <li th:each="showArticle: ${articlesAttribute}"  th:text="|${showArticle.title} - ${showArticle.tags} |">Sample book</li>
-</ul>
-
+<div th:each="showArticle: ${articlesAttribute}">
+    <h1 th:text="${showArticle.title}">Sample text</h1>
+    <p th:text="${showArticle.content}">Sample content</p>
+    <p th:text="${showArticle.tags}">Sample tags</p>
+</div>
 
 </body>
 </html>

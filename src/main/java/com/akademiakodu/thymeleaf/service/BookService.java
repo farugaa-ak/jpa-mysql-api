@@ -32,6 +32,10 @@ public class BookService {
         return bookRepository.findAll();
     }
 
+    public Book getBook(Long id){
+        return bookRepository.findOne(id);
+    }
+
     public void addBook(Book book) {
         bookRepository.save(book);//adding rows to book table
     }

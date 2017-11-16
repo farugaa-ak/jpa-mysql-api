@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+
 @Service
 public class BookService {
 
@@ -19,14 +21,14 @@ public class BookService {
     @Autowired
     public BookService(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
-        bookRepository.save(new Book("Natasha", "Krakow2017", "9.09"));
-        bookRepository.save(new Book("Natasha", "Krakow2017", "9.09"));
-        bookRepository.save(new Book("Marysia", "Wroclaw", "92.09"));
-        bookRepository.save(new Book("Zosia", "Gdansk", "9.209"));
+//        bookRepository.save(new Book("Natasha", "Krakow2017", "9.09"));
+//        bookRepository.save(new Book("Natasha", "Krakow2017", "9.09"));
+//        bookRepository.save(new Book("Marysia", "Wroclaw", "92.09"));
+//        bookRepository.save(new Book("Zosia", "Gdansk", "9.209"));
 
     }
 
-    public Iterable<Book> getBooks() {
+    public Collection<Book> getBooks() {
         return bookRepository.findAll();
     }
 
